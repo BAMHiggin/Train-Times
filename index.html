@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Times</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Crazy Train</h1>
+            <h2>Off the railz</h2>
+        </header>
+        <div class="card">
+            <h5 class="card-header">
+                <span class="far fa-newspaper"></span>
+                Current Train Schedule</h5>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Next Arrival (min)</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBody">
+                        
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="card">
+            <h5 class="card-header">Add Trains</h5>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Train Name</label>
+                        <input type="text" class="form-control" id="trainNameInput" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput2">Destination </label>
+                        <input type="text" class="form-control" id="destinationInput" placeholder="Destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput4">First Train Time (HH:mm - military time) </label>
+                        <input type="text" class="form-control" id="firstTrainInput" placeholder="HH:mm">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput3">Frequency </label>
+                        <input type="text" class="form-control" id="frequencyInput" placeholder="Minutes inbetween trains">
+                    </div>
+                </form>
+                <button type="button" class="btn btn-primary pull-right" id="submitButton">Submit</button>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <h5 class="card-header">Top Articles</h5>
+            <div class="card-body">
+                <p class="card-text"></p>
+            </div>
+        </div> -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    
+</body>
+
+</html>
