@@ -15,12 +15,12 @@
 
 <body>
     <div class="container">
-        <header class="header">
+        <header class="header bg-dark">
             <h1>Crazy Train</h1>
             <h2>Off the railz</h2>
         </header>
         <div class="card">
-            <h5 class="card-header">
+            <h5 class="card-header bg-secondary">
                 <span class="far fa-newspaper"></span>
                 Current Train Schedule</h5>
             <div class="card-body">
@@ -29,7 +29,7 @@
                         <tr>
                             <th scope="col">Train Name</th>
                             <th scope="col">Destination</th>
-                            <th scope="col">Next Arrival (min)</th>
+                            <th scope="col">Next Arrival</th>
                             <th scope="col">Frequency (min)</th>
                             <th scope="col">Minutes Away</th>
                         </tr>
@@ -43,7 +43,7 @@
 
         </div>
         <div class="card">
-            <h5 class="card-header">Add Trains</h5>
+            <h5 class="card-header bg-secondary">Add Trains</h5>
             <div class="card-body">
                 <form>
                     <div class="form-group">
@@ -62,17 +62,14 @@
                         <label for="exampleFormControlInput3">Frequency </label>
                         <input type="text" class="form-control" id="frequencyInput" placeholder="Minutes inbetween trains">
                     </div>
+                    
                 </form>
-                <button type="button" class="btn btn-primary pull-right" id="submitButton">Submit</button>
+                <button type="button" class="btn btn-secondary pull-right" id="submitButton">Submit</button>
             </div>
         </div>
-        <!-- <div class="card">
-            <h5 class="card-header">Top Articles</h5>
-            <div class="card-body">
-                <p class="card-text"></p>
-            </div>
-        </div> -->
+
     </div>
+    <a href="./assets/images/trimmed.mp3">Play music</a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="config.js"></script>
     <script src="app.js"></script>

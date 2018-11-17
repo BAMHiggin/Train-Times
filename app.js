@@ -1,18 +1,17 @@
 
-var myKey = config.myKey;
+var myKey = config.myKey; // hidden in config.js with a gitignore file so sensitive api key doesn't show up in github
 firebase.initializeApp(config);
 
 var database = firebase.database();
 
+//globals
 var trainName = "";
 var destination = "";
 var firstTime = "";
 var frequency = 0;
-var currentTime = moment();
-var minutesAway = ()
 
 
-$("#submitButton").on("click", function (event) {
+$("#submitButton").on("click", function (event) { //on submit click, 
     event.preventDefault();
 
     trainName = $("#trainNameInput").val().trim();
@@ -20,40 +19,54 @@ $("#submitButton").on("click", function (event) {
     firstTime = $("#firstTrainInput").val().trim();
     frequency = $("#frequencyInput").val().trim();
 
-    $('#trainNameInput').val("");
+    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years"); // one year back so we aren't dealing with times in the future
+    console.log(firstTimeConverted);
+
+    $('#trainNameInput').val(""); //clears input fields
     $('#destinationInput').val("");
     $('#firstTrainInput').val("");
     $('#frequencyInput').val("");
 
-    database.ref().push({
+    database.ref().push({  // pushes value to firebase
         trainName: trainName,
         destination: destination,
-        firstTime: firstTime,
-        frequency: frequency,
+        firstTime: firstTimeConverted.format(), //errors display without format() for Firebase, must use
+        frequency: frequency
     })
-    // database.ref().orderByChild(database.destination).limitToLast(1); //look into these -- unsure what to do with it right now
 
 
 });
 
 
-database.ref().on("child_added", function (childSnapshot) {
-    //console.log(childSnapshot.val());
-    // console.log(childSnapshot.val().trainName);
-    // console.log(childSnapshot.val().destination);
-    // console.log(childSnapshot.val().firstTime);
-    // console.log(childSnapshot.val().frequency);
+database.ref().on("child_added", function (childSnapshot) { //scans database objects for updates
+ 
+    var trainData = childSnapshot.val(); //snapshot of current object that were on
+
+    var currentTime = moment();
+
+    // Difference between the times
+    var diffTime = moment().diff(moment(trainData.firstTime), "minutes");
+
+    // Time apart (remainder)
+    var tRemainder = diffTime % trainData.frequency;
+
+    // Minute Until Train
+    var tMinutesTillTrain = trainData.frequency - tRemainder;
+
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("HH:mm");
 
 
-    var trainData = childSnapshot.val();
+
     $('#tBody')
         .append(
             `<tr>
             <th scope="row">${trainData.trainName}</th>
             <td>${trainData.destination}</td>
-            <td>${trainData.firstTime}</td>
+            <td>${nextTrain}</td>
             <td>${trainData.frequency}</td>
-            <td></td>
+            <td>${tMinutesTillTrain}</td>
+           
             </tr>`)
 
 });
@@ -61,6 +74,7 @@ database.ref().on("child_added", function (childSnapshot) {
 
 
 
+{/* <td>${currentTime}</td> */}
 
 
 // var row = $("<tr>");

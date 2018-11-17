@@ -1,5 +1,4 @@
 .header {
-    background-color:black;
     color: white;
     font-weight: bolder;
     padding: 40px;
@@ -9,4 +8,13 @@
 }
 footer {
     text-align: center;
+}
+
+body {
+    background-image: url("./images/foggy-forest.jpg");
+    background-size: cover;
+}
+
+.container {
+    opacity: .85;
 }
