@@ -1,11 +1,12 @@
 .header {
-    color: white;
+    color: rgb(41, 40, 40,41, 40, 40);
     font-weight: bolder;
     padding: 40px;
     text-align: center;
-    font-size: 50px;
     margin-bottom: 50px;
+    font-family: 
 }
+
 footer {
     text-align: center;
 }
