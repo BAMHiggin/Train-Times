@@ -1,12 +1,5 @@
 
-var config = {
-    apiKey: "AIzaSyCnFAEhHAdZoun1fxv9xNfEKeCJBBqArkU",
-    authDomain: "traintimes-bda19.firebaseapp.com",
-    databaseURL: "https://traintimes-bda19.firebaseio.com",
-    projectId: "traintimes-bda19",
-    storageBucket: "traintimes-bda19.appspot.com",
-    messagingSenderId: "218571669614"
-};
+var myKey = config.myKey;
 firebase.initializeApp(config);
 
 var database = firebase.database();
@@ -15,6 +8,9 @@ var trainName = "";
 var destination = "";
 var firstTime = "";
 var frequency = 0;
+var currentTime = moment();
+var minutesAway = ()
+
 
 $("#submitButton").on("click", function (event) {
     event.preventDefault();
@@ -60,10 +56,14 @@ database.ref().on("child_added", function (childSnapshot) {
             <td></td>
             </tr>`)
 
+});
 
 
 
-    // var row = $("<tr>");
+
+
+
+// var row = $("<tr>");
     // row.append( $("<td>").val().trainName);
 
     // var newRow= $("#tBody").append(row);
@@ -98,11 +98,3 @@ database.ref().on("child_added", function (childSnapshot) {
     //         <td>${currentTrain.frequency}</td>
     //         </tr>`)
     // }
-    
-
-});
-
-
-
-
-
